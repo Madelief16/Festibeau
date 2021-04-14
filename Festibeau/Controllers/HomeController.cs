@@ -1,17 +1,13 @@
 ﻿using Festibeau.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Festibeau.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -24,6 +20,60 @@ namespace Festibeau.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [Route("contact")]
+        public IActionResult contact()
+        {
+            return View();
+        }
+
+        [Route("data")]
+        public IActionResult data()
+        {
+            return View();
+        }
+
+        [Route("regels")]
+        public IActionResult regels()
+        {
+            return View();
+        }
+
+        [Route("prijzen")]
+        public IActionResult prijzen()
+        {
+            return View();
+        }
+
+        [Route("Locaties")]
+        public IActionResult Locaties()
+        {
+            return View();
+        }
+
+        [Route("Lowlands")]
+        public IActionResult Lowlands()
+        {
+            return View();
+        }
+
+        [Route("Hockeyloverz")]
+        public IActionResult Hockeyloverz()
+        {
+            return View();
+        }
+
+        [Route("MysteryLand")]
+        public IActionResult MysteryLand()
+        {
+            return View();
+        }
+
+        [Route("Pinkpop")]
+        public IActionResult Pinkpop()
         {
             return View();
         }
