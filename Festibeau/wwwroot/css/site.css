@@ -1,10 +1,18 @@
 ﻿
-html, body {
-  background-color: rgb(246, 251, 255);
-  padding: 0px;
-  margin: 0px;
-  font-family: monospace;
+html,body {
+    padding: 0;
+    margin: 0;
 }
+
+header {
+    background-image: url("https://i1.wp.com/ungherianews.com/wp-content/uploads/2018/06/balaton-festival.jpg?resize=1080%2C721&ssl=1");
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+    margin: 0px;
+    font-family: monospace;
+}
+
 
 .homepage {
   display: flex;
@@ -23,9 +31,22 @@ html, body {
   flex-direction: row;
 }
 
-  .festivals a {
+ .festivals a {
     flex: 1;
     display: block;
     background-color: aquamarine;
     padding: 10px;
-  }
+}
+
+.tekst-festivals {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+   
+.tekst-festivals p{
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 0px;
+
+    }
