@@ -30,8 +30,8 @@ namespace Festibeau.Controllers
             return View();
         }
 
-        [Route("data")]
-        public IActionResult data()
+        [Route("Festivals")]
+        public IActionResult Festivals()
         {
             return View();
         }
