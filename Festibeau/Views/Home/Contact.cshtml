@@ -21,14 +21,10 @@ miefbeau festival
     </h2>
     <footer>
         <form>
-            <p> Naam: </p>
-            <p><input type="text" name="name" value="Uw naam"></p>
-            <p> E-mail: </p>
-            <p><input type="text" name="E-mail" value="Uw e-mail"></p>
-            <p> Telefoon: </p>
-            <p><input type="text" name="telefoon nummer" value="Uw telefoon nummer"></p>
-           
-            <p><input type="submit"></p>
-        </form>
+            voornaam: <input type="text" name="voornaam" />
+            achternaam: <input type="text" name="achternaam" />
+            <input type="submit" value="versturen" />
+            </form>
+        <p> Hallo @ViewData["voornaam"] die achternaam @ViewData["achternaam"] heeft </p>
     </footer>
 </div>
