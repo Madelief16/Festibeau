@@ -1,23 +1,81 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="~/css/site.css?v=1" />
-    </head>
-    <body>
-        
-        
-        <header>
-            <h1>  Miefbeau festivals</h1>
-        </header>
+<head>
+    <link rel="stylesheet" href="~/css/site.css?v=1" />
+</head>
+<body>
 
-        <nav class="homepage">
-            <a href="/">Homepage</a>
-            <a href="/Festivals">Festivals</a>
-            <a href="/Prijzen">prijzen</a>
-            <a href="/Regels">Regels</a>
-            <a href="/Locaties">Locaties</a>
+
+    <header>
+        <h1>  Miefbeau festivals</h1>
+    </header>
+
+    <nav class="homepage">
+        <a href="/">Homepage</a>
+        <a href="/Festivals">Festivals</a>
+        <a href="/Prijzen">prijzen</a>
+        <a href="/Regels">Regels</a>
+        <a href="/Locaties">Locaties</a>
+        <a href="/Contact">Contact</a>
+    </nav>
+    @RenderBody()
+</body>
+
+<body>
+<footer class="footer-distributed">
+
+    <div class="footer-left">
+
+        <h3><span>Festivalterrein de GEKSTE</span></h3>
+
+        <p class="footer-links">
+            <a href="/">Home  </a>
+            <a href="/Transport">Transport</a>
             <a href="/Contact">Contact</a>
-        </nav>
-        @RenderBody()
+            <a href="/Huisregels">Huisregels</a>
+        </p>
+    </div>
+
+    <div class="footer-center">
+
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Vanillestraat 13</span> Flevoland, Nederland</p>
+        </div>
+
+        <div>
+            <i class="fa fa-phone"></i>
+            <p>06 123456</p>
+        </div>
+
+        <div>
+            <i class="fa fa-envelope"></i>
+            <p>contact@festivalterrein.com</p>
+        </div>
+
+    </div>
+
+    <div class="footer-right">
+
+        <p class="footer-company-about">
+            <span>Over Ons</span>
+            Wij zijn festivalterrein DE GEKSTE, het leukste festivalterrein van heel Nederland. Volg ons op facebook, instragram en twitter.
+        </p>
+
+        <div class="footer-icons">
+
+            <a><img src="~/img/favicons/facebook.png" style="width:56px; height:56px;" /></a>
+            <a><img src="~/img/favicons/insta.png" style="width:56px; height:56px;" /></a>
+            <a><img src="~/img/favicons/twitter.png" style="width:56px; height:56px;" /></a>
+
+        </div>
+
+    </div>
+
+    <div class="footerbottom">
+        <p>Madelief en Isabeau &copy; 2020</p>
+    </div>
     </body>
+
+
 </html>
