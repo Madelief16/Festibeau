@@ -23,7 +23,10 @@
         <div> beschrijving: <input type="text" name="address" /> </div>
         <input type="submit" value="verstuur" />
     </form>
-<p> Hallo @ViewData["firstname"] die achternaam @ViewData["lastname"] heeft </p>
 
+@if (ViewData!= null)
+{
+<p> Hallo @ViewData["firstname"] die achternaam @ViewData["lastname"] heeft </p>
+}
 </div>
 
