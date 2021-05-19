@@ -1,4 +1,5 @@
-﻿@{ ViewData["Title"] = "Contact"; }
+﻿@model SendAndStore.Models.Person
+@{ ViewData["Title"] = "Contact"; }
 <h1>@ViewData["Title"]</h1>
 
 <p>
@@ -16,17 +17,20 @@
 
     <form method="post">
         <div> Voornaam: <input type="text" name="firstname" /> </div>
+        @Html.ValidationMessageFor(m => m.FirstName)
         <div> Achternaam: <input type="text" name="lastname" /> </div>
+        @Html.ValidationMessageFor(m => m.LastName)
         <div> E-mail: <input type="text" name="email" /> </div>
+        @Html.ValidationMessageFor(m => m.Email)
         <div> Telefoon: <input type="text" name="phone" /> </div>
         <div> Adres: <input type="text" name="address" /> </div>
         <div> beschrijving: <input type="text" name="address" /> </div>
         <input type="submit" value="verstuur" />
     </form>
 
-@if (ViewData!= null)
+@if (Model != null)
 {
-<p> Hallo @ViewData["firstname"] die achternaam @ViewData["lastname"] heeft </p>
+<p>Hallo @Model.FirstName die achternaam @Model.LastName heeft </p>
 }
 </div>
 

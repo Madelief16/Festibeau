@@ -76,8 +76,12 @@ namespace Festibeau.Controllers
         }
 
         [HttpPost]
+        [Route("Contact")]
         public IActionResult Contact(Person person)
-        { 
+        {
+            if (ModelState.IsValid)
+                return Redirect("/succes");
+
         return View(person);
         }
 
