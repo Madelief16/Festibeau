@@ -8,7 +8,7 @@ namespace SendAndStore.Models
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Verplicht in te vullen")]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Verplicht in te vullen")]
+        [EmailAddress(ErrorMessage = "Verplicht in te vullen")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Verplicht in te vullen")]
         public string Phone { get; set; }
