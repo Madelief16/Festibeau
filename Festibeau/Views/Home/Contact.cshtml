@@ -14,20 +14,14 @@
 </p>
 
 <div id="contact">
-    <h2>
-        Contact
-    </h2>
-    <footer>
-        <form>
-            voornaam: <input type="text" name="voornaam" />
-            achternaam: <input type="text" name="achternaam" />
-            <input type="submit" value="versturen" />
+   
+
+        <form method="post">
+            Voornaam: <input type="text" name="firstname" />
+            Achternaam: <input type="text" name="lastname" />
+            <input type="submit" value="verstuur" />
             </form>
-        <p> Hallo @ViewData["voornaam"] die achternaam @ViewData["achternaam"] heeft </p>
-    </footer>
-</div>            <p><input type="submit"></p>
-        </form>
-    </footer>
-</div>        </form>
-    </footer>
-</div>
+        <p> Hallo @ViewData["firstname"] die achternaam @ViewData["lastname"] heeft </p>
+
+</div>            
+    

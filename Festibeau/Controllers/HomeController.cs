@@ -59,17 +59,22 @@ namespace Festibeau.Controllers
         }
 
         [Route("Privacy")]
-        public IActionResult Festivals()
+        public IActionResult Privacy()
         {
             return View();
         }
 
-        [Route("contact")]
-    public IActionResult contact(string voornaam, string achternaam)
-    {
-        
-        ViewData["voornaam"] = voornaam;
-        ViewData["achternaam"] = achternaam;
+        [Route("Contact")]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(string firstName, string lastName)
+          {
+        ViewData["firstName"] = firstName;
+        ViewData["lastName"] = lastName;
         
         return View();
         }
@@ -128,4 +133,6 @@ namespace Festibeau.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+
+
 }
