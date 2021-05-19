@@ -20,12 +20,16 @@ namespace Festibeau.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            //alle namen ophalen
+            var names = GetNames();
+
+            //stop de namen in de html
+            return View(names);
         }
         public List<string> GetNames()
         {
             // stel in waar de database gevonden kan worden
-            string connectionString = "Server=172.16.160.21;Port=3306;Database=fastfood;Uid=lgg;Pwd=0P%Y9fI2GdO#;";
+            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021SQL;";
 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<string> names = new List<string>();
