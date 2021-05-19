@@ -6,6 +6,7 @@ using MySql.Data;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System;
+using SendAndStore.Models;
 
 namespace Festibeau.Controllers
 {
@@ -29,7 +30,7 @@ namespace Festibeau.Controllers
         public List<string> GetNames()
         {
             // stel in waar de database gevonden kan worden
-            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021SQL;";
+            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<string> names = new List<string>();
@@ -75,12 +76,9 @@ namespace Festibeau.Controllers
         }
 
         [HttpPost]
-        public IActionResult Contact(string firstName, string lastName)
-          {
-        ViewData["firstName"] = firstName;
-        ViewData["lastName"] = lastName;
-        
-        return View();
+        public IActionResult Contact(Person person)
+        { 
+        return View(person);
         }
 
         [Route("Festivals")]

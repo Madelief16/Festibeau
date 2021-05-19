@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Contact";
-}
+﻿@{ ViewData["Title"] = "Contact"; }
 <h1>@ViewData["Title"]</h1>
 
 <p>
@@ -14,14 +12,18 @@
 </p>
 
 <div id="contact">
-   
 
-        <form method="post">
-            Voornaam: <input type="text" name="firstname" />
-            Achternaam: <input type="text" name="lastname" />
-            <input type="submit" value="verstuur" />
-            </form>
-        <p> Hallo @ViewData["firstname"] die achternaam @ViewData["lastname"] heeft </p>
 
-</div>            
-    
+    <form method="post">
+        <div> Voornaam: <input type="text" name="firstname" /> </div>
+        <div> Achternaam: <input type="text" name="lastname" /> </div>
+        <div> E-mail: <input type="text" name="email" /> </div>
+        <div> Telefoon: <input type="text" name="phone" /> </div>
+        <div> Adres: <input type="text" name="address" /> </div>
+        <div> beschrijving: <input type="text" name="address" /> </div>
+        <input type="submit" value="verstuur" />
+    </form>
+<p> Hallo @ViewData["firstname"] die achternaam @ViewData["lastname"] heeft </p>
+
+</div>
+

@@ -10,3 +10,4 @@ namespace SendAndStore.Models
         public string Description { get; set; }
 
     }
+}
