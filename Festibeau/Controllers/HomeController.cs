@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System;
 using SendAndStore.Models;
+using Festibeau.database;
 
 namespace Festibeau.Controllers
 {
@@ -141,10 +142,54 @@ namespace Festibeau.Controllers
         [Route("prijzen")]
         public IActionResult prijzen()
         {
-            return View();
+            var tickets = GetTickets();
+
+
+
+            return View(tickets); 
         }
 
-        [Route("Locaties")]
+        private object GetTickets()
+        {
+            // stel in waar de database gevonden kan worden
+            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
+
+            // maak een lege lijst waar we de namen in gaan opslaan
+            List<Ticket> tickets = new List<Ticket>();
+
+            // verbinding maken met de database
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                // verbinding openen
+                conn.Open();
+
+                // SQL query die we willen uitvoeren
+                MySqlCommand cmd = new MySqlCommand("select * from tickets", conn);
+
+                // resultaat van de query lezen
+                using (var reader = cmd.ExecuteReader())
+                {
+                    // elke keer een regel (of eigenlijk: database rij) lezen
+                    while (reader.Read())
+                    {
+                        Ticket t = new Ticket
+                        {
+                            // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
+                            Id = Convert.ToInt32(reader["Id"]),
+                            soort = reader["soort"].ToString(),
+                            prijs = reader["prijs"].ToString(),
+                        };
+
+                        //voeg de naam toe aan de lijst met namen
+                        tickets.Add(t);
+                    }
+                }
+            }
+
+            // return de lijst met namen
+            return tickets;
+        }
+            [Route("Locaties")]
         public IActionResult Locaties()
         {
             return View();
