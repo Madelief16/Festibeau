@@ -2,36 +2,26 @@
 @{ ViewData["Title"] = "Contact"; }
 <h1>@ViewData["Title"]</h1>
 
-<p>
-    <h2>Madelief van der Bles</h2>
-    Weet veel over de data
-</p>
-
-<p>
-    <h3>Isabeau Rikkoert</h3>
-    Weet veel over de ticketverkoop
-</p>
-
-<div id="contact">
- 
+    
    
+            <div id="contact">
 
-        <form method="post">
-            <div> Voornaam: <input type="text" name="firstname" /> </div>
-            @Html.ValidationMessageFor(m => m.FirstName)
-            <div> Achternaam: <input type="text" name="lastname" /> </div>
-            @Html.ValidationMessageFor(m => m.LastName)
-            <div> E-mail: <input type="text" name="email" /> </div>
-            @Html.ValidationMessageFor(m => m.Email)
-            <div> Telefoon: <input type="text" name="phone" /> </div>
-            <div> Adres: <input type="text" name="address" /> </div>
-            <div> beschrijving: <input type="text" name="address" /> </div>
-            <input type="submit" value="verstuur" />
-        </form>
+                <form method="post">
+                    <div> Voornaam: <input type="text" name="firstname" /> </div>
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                    <div> Achternaam: <input type="text" name="lastname" /> </div>
+                    @Html.ValidationMessageFor(m => m.LastName)
+                    <div> E-mail: <input type="text" name="email" /> </div>
+                    @Html.ValidationMessageFor(m => m.Email)
+                    <div> Telefoon: <input type="text" name="phone" /> </div>
+                    <div> Adres: <input type="text" name="address" /> </div>
+                    <div> beschrijving: <input type="text" name="address" /> </div>
+                    <input type="submit" value="verstuur" />
+                </form>
 
-        @if (Model != null)
-        {
-            <p>Hallo @Model.FirstName die achternaam @Model.LastName heeft </p>
-        }
-</div>
+                @if (Model != null)
+                {
+                    <p>Hallo @Model.FirstName die achternaam @Model.LastName heeft </p>
+                }
+            </div>
 

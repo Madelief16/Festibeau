@@ -42,7 +42,7 @@ namespace Festibeau.Controllers
                 conn.Open();
 
                 // SQL query die we willen uitvoeren
-                MySqlCommand cmd = new MySqlCommand("select * from product", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from artiesten", conn);
 
                 // resultaat van de query lezen
                 using (var reader = cmd.ExecuteReader())
@@ -51,10 +51,11 @@ namespace Festibeau.Controllers
                     while (reader.Read())
                     {
                         // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
-                        string Name = reader["Naam"].ToString();
-
+                        string voornaam = reader["voornaam"].ToString();
+                        string achternaam = reader["achternaam"].ToString();
                         // voeg de naam toe aan de lijst met namen
-                        names.Add(Name);
+                        names.Add(achternaam);
+                        names.Add(voornaam );
                     }
                 }
             }
@@ -72,7 +73,47 @@ namespace Festibeau.Controllers
         [Route("Contact")]
         public IActionResult Contact()
         {
+            var contact = GetContact();
+            
+
+
             return View();
+        }
+
+        private object GetContact()
+        {
+            // stel in waar de database gevonden kan worden
+            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
+
+            // maak een lege lijst waar we de namen in gaan opslaan
+            List<string> names = new List<string>();
+
+            // verbinding maken met de database
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                // verbinding openen
+                conn.Open();
+
+                // SQL query die we willen uitvoeren
+                MySqlCommand cmd = new MySqlCommand("select * from contact", conn);
+
+                // resultaat van de query lezen
+                using (var reader = cmd.ExecuteReader())
+                {
+                    // elke keer een regel (of eigenlijk: database rij) lezen
+                    while (reader.Read())
+                    {
+                        // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
+                        string naam = reader["naam"].ToString();
+                        
+                        // voeg de naam toe aan de lijst met namen
+                        names.Add(naam);
+                    }
+                }
+            }
+
+            // return de lijst met namen
+            return names;
         }
 
         [HttpPost]
