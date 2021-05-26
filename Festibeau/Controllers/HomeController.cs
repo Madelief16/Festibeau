@@ -133,10 +133,52 @@ namespace Festibeau.Controllers
             return View();
         }
 
-        [Route("regels")]
-        public IActionResult regels()
+        [Route("festivalregels")]
+        public IActionResult festivalregels()
         {
-            return View();
+            var regels = GetRegels();
+
+            return View(regels);
+        }
+
+        private object GetRegels()
+        {
+            // stel in waar de database gevonden kan worden
+            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
+
+            // maak een lege lijst waar we de namen in gaan opslaan
+            List<Regel> regels = new List<Regel>();
+
+            // verbinding maken met de database
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                // verbinding openen
+                conn.Open();
+
+                // SQL query die we willen uitvoeren
+                MySqlCommand cmd = new MySqlCommand("select * from regels", conn);
+
+                // resultaat van de query lezen
+                using (var reader = cmd.ExecuteReader())
+                {
+                    // elke keer een regel (of eigenlijk: database rij) lezen
+                    while (reader.Read())
+                    {
+                        Regel r = new Regel
+                        {
+                            // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
+                            Id = Convert.ToInt32(reader["Id"]),
+                            richtlijnen = reader["richtlijnen"].ToString(),
+                        };
+
+                        //voeg de naam toe aan de lijst met namen
+                        regels.Add(r);
+                    }
+                } 
+            }
+
+            // return de lijst met namen
+            return regels;
         }
 
         [Route("prijzen")]
