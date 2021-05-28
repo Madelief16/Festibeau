@@ -1,6 +1,6 @@
-﻿namespace Festibeau.Controllers
+﻿namespace Festibeau.database
 {
-    internal class Regel
+    public class Regel
     {
         public int Id { get; internal set; }
         public string richtlijnen { get; internal set; }

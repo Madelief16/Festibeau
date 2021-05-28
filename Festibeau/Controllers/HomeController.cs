@@ -141,7 +141,7 @@ namespace Festibeau.Controllers
             return View(regels);
         }
 
-        private object GetRegels()
+        private List<Regel> GetRegels()
         {
             // stel in waar de database gevonden kan worden
             string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";

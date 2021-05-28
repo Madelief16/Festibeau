@@ -1,7 +1,19 @@
-﻿@{
+﻿@using Festibeau.database;
+@model List<Regel> 
+@{
     ViewData["Title"] = "regels";
 }
-<h1>@ViewData["Title"]</h1>
+
+<div class="text-center">
+    <h1>Alle namen!</h1>
+    @foreach(Regel r in Model)
+    {
+        <p>@r.richtlijnen </p>
+    }
+</div>
+
+
+
 
 <h2>Regels voor de festivals </h2>
 
@@ -18,8 +30,7 @@
     <li>Maximaal vijf mensen tegelijkertijd in een wc-ruimte</li>
     <li>Backstage moet je de looproutes volgen en 1,5 meter afstand houden</li>
     <li>Max 10 mensen per groep bij de VIP rondleiding met 1 begeleider</li>
-</ul> 
+</ul>
 
 <footer>
-    
-    </footer>
+</footer>
