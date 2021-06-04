@@ -2,11 +2,11 @@
 {
     public class Festival
     {
-        public int Id { get; internal set; }
-        public string naam { get; internal set; }
-        public int data { get; internal set; }
-        public string beschrijving { get; internal set; }
-        public string locatie { get; internal set; }
+        public int Id { get; set; }
+        public string naam { get; set; }
+        public int data { get; set; }
+        public string beschrijving { get; set; }
+        public string locatie { get; set; }
 
     }
 }

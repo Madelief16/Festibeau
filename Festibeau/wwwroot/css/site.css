@@ -26,31 +26,26 @@ header {
     padding: 10px;
   }
 
-.festivals1 {
-  display: flex;
-  flex-direction: row;
+.festivals {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
- .festivals1 a {
-    flex: 1;
-    display: block;
+.festival {
+    width: 47%;
+    background: red;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+ .festival a {
     background-color: aquamarine;
     padding: 10px;
 }
 
-.festivals2 {
-    display: flex;
-    flex-direction: row;
-}
-
-.festivals2 a {
-        flex: 1;
-        display: block;
-        background-color: aquamarine;
-        padding: 10px;
- }
-
-.tekst-festivals {
+/*.tekst-festivals {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -61,4 +56,4 @@ header {
     margin-left: 100px;
     margin-top: 0px;
 }
-
+*/

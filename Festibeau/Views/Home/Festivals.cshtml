@@ -4,17 +4,18 @@
     ViewData["Title"] = "festivals";
 }
 
-<div class="text-center">
-    <h1>Alle namen!</h1>
+<h1>Festivals</h1>
+
+<div class="festivals">
     @foreach (Festival f in Model)
     {
-        <p>@f.naam - @f.beschrijving - @f.data - @f.locatie  </p>
+        <div class="festival">
+            <a href="/festival/@f.Id/@f.naam">@f.naam</a>
+        </div>
     }
 </div>
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="tekst-festivals">
+@*<div class="tekst-festivals">
     <p>
         Er zijn verschillende festivals waar je heen kunt gaan.
     </p>
@@ -36,5 +37,5 @@
 <nav class="festivals2">
     <a href="/Mysteryland">Mysteryland</a>
     <a href="/PinkPop">PinkPop</a>
-</nav>
+</nav>*@
 
