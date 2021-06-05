@@ -22,6 +22,8 @@ namespace Festibeau.Controllers
 
         public IActionResult Index()
         {
+            ViewData["User"] = HttpContext.Session.GetString("User");
+
             //alle namen ophalen
             var names = GetNames();
 
