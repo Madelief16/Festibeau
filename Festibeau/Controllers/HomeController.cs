@@ -72,8 +72,13 @@ namespace Festibeau.Controllers
         }
 
         [Route("Login")]
-        public IActionResult Login()
+        public IActionResult Login(string username, string password)
         {
+            if (password == "geheim")
+            {
+                HttpContext.Session.SetString("User", username);
+                return Redirect("/")
+            }
             return View();
         }
 
