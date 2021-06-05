@@ -71,6 +71,12 @@ namespace Festibeau.Controllers
             return View();
         }
 
+        [Route("Login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         [Route("Contact")]
         public IActionResult Contact()
         {
