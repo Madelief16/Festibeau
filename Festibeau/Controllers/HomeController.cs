@@ -9,12 +9,14 @@ using System;
 using SendAndStore.Models;
 using Festibeau.database;
 using Microsoft.AspNetCore.Http;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Festibeau.Controllers
 {
-  public class HomeController : Controller
+    public class HomeController : Controller
     {
-         private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -59,7 +61,7 @@ namespace Festibeau.Controllers
                         string achternaam = reader["achternaam"].ToString();
                         // voeg de naam toe aan de lijst met namen
                         names.Add(achternaam);
-                        names.Add(voornaam );
+                        names.Add(voornaam);
                     }
                 }
             }
@@ -77,11 +79,29 @@ namespace Festibeau.Controllers
         [Route("Login")]
         public IActionResult Login(string username, string password)
         {
-            if (password == "geheim")
+            // hash voor "wachtwoord"
+            string hash = "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937";
+
+            // is er een wachtwoord ingevoerd?
+            if (!string.IsNullOrWhiteSpace(password))
             {
-                HttpContext.Session.SetString("User", username);
-                return Redirect("/");
+
+                //Er is iets ingevoerd, nu kunnen we het wachtwoord hashen en vergelijken met de hash "uit de database"
+                string hashVanIngevoerdWachtwoord = ComputeSha256Hash(password);
+                if (hashVanIngevoerdWachtwoord == hash)
+                {
+                    HttpContext.Session.SetString("User", username);
+                    return Redirect("/");
+                }
+
+                if (password == "geheim")
+                {
+                    HttpContext.Session.SetString("User", username);
+                    return Redirect("/");
+                }
+                return View();
             }
+
             return View();
         }
 
@@ -89,7 +109,7 @@ namespace Festibeau.Controllers
         public IActionResult Contact()
         {
             var contact = GetContact();
-            
+
 
 
             return View();
@@ -120,7 +140,7 @@ namespace Festibeau.Controllers
                     {
                         // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
                         string naam = reader["naam"].ToString();
-                        
+
                         // voeg de naam toe aan de lijst met namen
                         names.Add(naam);
                     }
@@ -138,7 +158,7 @@ namespace Festibeau.Controllers
             if (ModelState.IsValid)
                 return Redirect("/succes");
 
-        return View(person);
+            return View(person);
         }
 
         [Route("Festivals")]
@@ -162,7 +182,7 @@ namespace Festibeau.Controllers
         }
 
 
-        private List<Festival> GetFestivals ()
+        private List<Festival> GetFestivals()
         {
             // stel in waar de database gevonden kan worden
             string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
@@ -191,7 +211,8 @@ namespace Festibeau.Controllers
                             Id = Convert.ToInt32(reader["Id"]),
                             naam = reader["naam"].ToString(),
                             beschrijving = reader["beschrijving"].ToString(),
-                           // data = reader["data"].ToString(),
+                            foto = reader["foto"].ToString(),
+                            // data = reader["data"].ToString(),
                             locatie = reader["locatie"].ToString(),
 
                         };
@@ -235,6 +256,7 @@ namespace Festibeau.Controllers
                             Id = Convert.ToInt32(reader["Id"]),
                             naam = reader["naam"].ToString(),
                             beschrijving = reader["beschrijving"].ToString(),
+                            foto = reader["foto"].ToString(),
                             // data = reader["data"].ToString(),
                             locatie = reader["locatie"].ToString(),
 
@@ -291,7 +313,7 @@ namespace Festibeau.Controllers
                         //voeg de naam toe aan de lijst met namen
                         regels.Add(r);
                     }
-                } 
+                }
             }
 
             // return de lijst met namen
@@ -305,7 +327,7 @@ namespace Festibeau.Controllers
 
 
 
-            return View(tickets); 
+            return View(tickets);
         }
 
         private object GetTickets()
@@ -348,7 +370,7 @@ namespace Festibeau.Controllers
             // return de lijst met namen
             return tickets;
         }
-            [Route("Locaties")]
+        [Route("Locaties")]
         public IActionResult Locaties()
         {
             return View();
@@ -382,6 +404,23 @@ namespace Festibeau.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 

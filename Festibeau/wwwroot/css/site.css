@@ -17,14 +17,16 @@ header {
 .homepage {
   display: flex;
   flex-direction: row;
+  
 }
 
-  .homepage a {
-    flex: 1;
-    display: block;
-    background-color: aquamarine;
-    padding: 10px;
-  }
+    .homepage a {
+        flex: 1;
+        display: block;
+        background-color: aquamarine;
+        padding: 10px;
+        
+    }
 
 .festivals {
     display: flex;
