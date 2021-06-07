@@ -28,8 +28,6 @@ namespace Festibeau
                 options.Cookie.Name = ".AdventureWorks.Session";
                 options.IdleTimeout = TimeSpan.FromSeconds(200);
                 options.Cookie.IsEssential = true;
-                
-                app.UseSession();
             });
             
         }
@@ -50,6 +48,8 @@ namespace Festibeau
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

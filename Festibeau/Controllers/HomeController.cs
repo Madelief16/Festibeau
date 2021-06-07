@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using System;
 using SendAndStore.Models;
 using Festibeau.database;
+using Microsoft.AspNetCore.Http;
 
 namespace Festibeau.Controllers
 {
@@ -79,7 +80,7 @@ namespace Festibeau.Controllers
             if (password == "geheim")
             {
                 HttpContext.Session.SetString("User", username);
-                return Redirect("/")
+                return Redirect("/");
             }
             return View();
         }
