@@ -3,8 +3,18 @@
 @{
     ViewData["Title"] = Model.naam;
 }
-<h1>@Model.naam</h1>
-<p>@Model.beschrijving</p>
-<p>@Model.data</p>
-<p>@Model.locatie</p>
-<img src="@Model.foto" />  
+
+<div class="left"><img class="logo" src="@Model.foto" /></div>
+
+<div class="right">
+    <div>
+        <h3>Festival: @Model.naam</h3>
+        <h3>Datum @Model.data</h3>
+        <h3>Loactie @Model.locatie</h3>
+    </div>
+    <h3>Beschrijving:</h3>
+    <p> @Model.beschrijving</p> <br /> <br />
+   
+</div>
+
+ 

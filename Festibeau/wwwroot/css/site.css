@@ -14,6 +14,14 @@ header {
 }
 
 
+.logo {
+    border-radius: 10%;
+    display: block;
+    width: 300px;
+    height: 200px;
+} 
+
+
 .homepage {
   display: flex;
   flex-direction: row;
@@ -27,6 +35,8 @@ header {
         padding: 10px;
         
     }
+
+
 
 .festivals {
     display: flex;
@@ -56,18 +66,7 @@ footer {
     border-top: solid black 2px;
 }
 
-.footer-fotos {
-    list-style: none;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-}
 
-.footer-foto {
-    width: 100px;
-    height: 100px;
-    padding: 5%;
-}
 
 .footer-tekst {
     margin: auto;
