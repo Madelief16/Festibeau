@@ -36,6 +36,12 @@ header {
         
     }
 
+.fotohomepage {
+    display: flex;
+    space-between: ;
+}
+
+
 
 
 .festivals {
