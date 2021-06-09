@@ -17,6 +17,8 @@ namespace Festibeau.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        // stel in waar de database gevonden kan worden
+        string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -35,9 +37,7 @@ namespace Festibeau.Controllers
         }
         public List<string> GetNames()
         {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
-
+            
             // maak een lege lijst waar we de namen in gaan opslaan
             List<string> names = new List<string>();
 
@@ -93,6 +93,10 @@ namespace Festibeau.Controllers
                     HttpContext.Session.SetString("User", username);
                     return Redirect("/");
                 }
+                {
+                    HttpContext.Session.SetString("User", username);
+                    return Redirect("/");
+                }
 
                 if (password == "geheim")
                 {
@@ -117,9 +121,6 @@ namespace Festibeau.Controllers
 
         private object GetContact()
         {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
-
             // maak een lege lijst waar we de namen in gaan opslaan
             List<string> names = new List<string>();
 
@@ -184,9 +185,6 @@ namespace Festibeau.Controllers
 
         private List<Festival> GetFestivals()
         {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
-
             // maak een lege lijst waar we de namen in gaan opslaan
             List<Festival> festivals = new List<Festival>();
 
@@ -228,10 +226,7 @@ namespace Festibeau.Controllers
         }
 
         private Festival GetFestival(int id)
-        {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
-
+        { 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<Festival> festivals = new List<Festival>();
 
@@ -282,9 +277,6 @@ namespace Festibeau.Controllers
 
         private List<Regel> GetRegels()
         {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
-
             // maak een lege lijst waar we de namen in gaan opslaan
             List<Regel> regels = new List<Regel>();
 
@@ -332,8 +324,7 @@ namespace Festibeau.Controllers
 
         private object GetTickets()
         {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=110368;Uid=110368;Pwd=inf2021sql;";
+            
 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<Ticket> tickets = new List<Ticket>();
@@ -370,6 +361,23 @@ namespace Festibeau.Controllers
             // return de lijst met namen
             return tickets;
         }
+
+        private void SavePerson(Person person)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO klant(voornaam, achternaam, email, bericht) VALUES(?voornaam, ?achternaam, ?email, ?bericht)", conn);
+
+                cmd.Parameters.Add("?voornaam", MySqlDbType.Text).Value = person.FirstName;
+                cmd.Parameters.Add("?achternaam", MySqlDbType.Text).Value = person.LastName;
+                cmd.Parameters.Add("?email", MySqlDbType.Text).Value = person.Email;
+                cmd.Parameters.Add("?bericht", MySqlDbType.Text).Value = person.Description;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
         [Route("Locaties")]
         public IActionResult Locaties()
         {
