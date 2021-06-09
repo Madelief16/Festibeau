@@ -312,8 +312,8 @@ namespace Festibeau.Controllers
             return regels;
         }
 
-        [Route("prijzen")]
-        public IActionResult prijzen()
+        [Route("Tickets")]
+        public IActionResult Tickets()
         {
             var tickets = GetTickets();
 
