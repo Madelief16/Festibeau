@@ -157,9 +157,20 @@ namespace Festibeau.Controllers
         public IActionResult Contact(Person person)
         {
             if (ModelState.IsValid)
+            {
+                SavePerson(person);
+                
                 return Redirect("/succes");
+            }
+                
 
             return View(person);
+        }
+
+        [Route("succes")]
+        public IActionResult succes()
+        {
+            return View();
         }
 
         [Route("Festivals")]
@@ -367,11 +378,13 @@ namespace Festibeau.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO klant(voornaam, achternaam, email, bericht) VALUES(?voornaam, ?achternaam, ?email, ?bericht)", conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO klant(voornaam, achternaam, email, telefoon, adres, bericht) VALUES(?voornaam, ?achternaam, ?email, ?telefoon, ?adres, ?bericht)", conn);
 
                 cmd.Parameters.Add("?voornaam", MySqlDbType.Text).Value = person.FirstName;
                 cmd.Parameters.Add("?achternaam", MySqlDbType.Text).Value = person.LastName;
                 cmd.Parameters.Add("?email", MySqlDbType.Text).Value = person.Email;
+                cmd.Parameters.Add("?telefoon", MySqlDbType.Text).Value = person.Phone;
+                cmd.Parameters.Add("?adres", MySqlDbType.Text).Value = person.Address;
                 cmd.Parameters.Add("?bericht", MySqlDbType.Text).Value = person.Description;
                 cmd.ExecuteNonQuery();
             }
