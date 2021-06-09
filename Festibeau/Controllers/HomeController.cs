@@ -93,16 +93,8 @@ namespace Festibeau.Controllers
                     HttpContext.Session.SetString("User", username);
                     return Redirect("/");
                 }
-                {
-                    HttpContext.Session.SetString("User", username);
-                    return Redirect("/");
-                }
-
-                if (password == "geheim")
-                {
-                    HttpContext.Session.SetString("User", username);
-                    return Redirect("/");
-                }
+                
+               
                 return View();
             }
 
@@ -374,23 +366,25 @@ namespace Festibeau.Controllers
         }
 
         private void SavePerson(Person person)
+            
         {
+            person.Wachtwoord = ComputeSha256Hash(person.Wachtwoord);
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO klant(voornaam, achternaam, email, telefoon, adres, bericht) VALUES(?voornaam, ?achternaam, ?email, ?telefoon, ?adres, ?bericht)", conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO klant(voornaam, achternaam, email, wachtwoord, telefoon, adres, bericht) VALUES(?voornaam, ?achternaam, ?email, ?wachtwoord, ?telefoon, ?adres, ?bericht)", conn);
 
                 cmd.Parameters.Add("?voornaam", MySqlDbType.Text).Value = person.FirstName;
                 cmd.Parameters.Add("?achternaam", MySqlDbType.Text).Value = person.LastName;
                 cmd.Parameters.Add("?email", MySqlDbType.Text).Value = person.Email;
+                cmd.Parameters.Add("?wachtwoord", MySqlDbType.Text).Value = person.Wachtwoord;
                 cmd.Parameters.Add("?telefoon", MySqlDbType.Text).Value = person.Phone;
                 cmd.Parameters.Add("?adres", MySqlDbType.Text).Value = person.Address;
                 cmd.Parameters.Add("?bericht", MySqlDbType.Text).Value = person.Description;
                 cmd.ExecuteNonQuery();
             }
         }
-
-
+       
         [Route("Locaties")]
         public IActionResult Locaties()
         {

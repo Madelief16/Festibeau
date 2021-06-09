@@ -11,6 +11,7 @@ namespace SendAndStore.Models
         [EmailAddress(ErrorMessage = "Verplicht in te vullen")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Verplicht in te vullen")]
+        public string Wachtwoord { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
