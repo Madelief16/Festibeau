@@ -1,15 +1,16 @@
 ﻿@using Festibeau.database;
 @model List<Ticket>
-@{ 
+@{
     ViewData["Title"] = "Tickets";
 }
 
 <div class="text-center">
-    <h1>Alle Tickets!</h1>
-        @foreach(Ticket t in Model)
-            {
-             <p>@t.soort - @t.prijs</p>
-            }
-        </div>
+    <h1>Soorten Tickets!</h1>
+    @foreach (Ticket t in Model)
+    {
+        <p>@t.soort - @t.prijs</p>
+    }
+</div>
+
 
 

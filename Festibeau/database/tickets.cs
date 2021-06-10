@@ -9,7 +9,9 @@ namespace Festibeau.database
     {
         public int Id { get; set; }
         public string  soort { get; set; }
+        public string beschrijving { get; set; }
         public string prijs { get; set; }
+
 
     }
 }

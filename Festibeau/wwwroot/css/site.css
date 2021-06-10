@@ -25,7 +25,6 @@ header {
 .homepage {
   display: flex;
   flex-direction: row;
-  
 }
 
     .homepage a {
@@ -35,10 +34,6 @@ header {
         padding: 10px;
         
     }
-
-.fotohomepage {
-    display: flex;
-}
 
 
 
@@ -61,6 +56,12 @@ header {
         background-color: antiquewhite;
         padding: 100px;
     }
+
+
+
+
+
+
 
 /*Footer*/
 
