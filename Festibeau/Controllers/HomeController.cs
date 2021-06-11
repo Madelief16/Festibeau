@@ -409,6 +409,12 @@ namespace Festibeau.Controllers
             return View();
         }
 
+        [Route("viernulvier")]
+        public IActionResult viernulvier()
+        {
+            return View();
+        }
+
         [Route("Pinkpop")]
         public IActionResult Pinkpop()
         {
