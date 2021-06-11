@@ -6,7 +6,8 @@ namespace SendAndStore.Models
     {
         [Required(ErrorMessage = "Verplicht in te vullen")]
         public string Email { get; set; }
+
         [Required(ErrorMessage = "Verplicht in te vullen")]
-        public string Password { get; set; }
+        public string wachtwoord { get; set; }
     }
 }

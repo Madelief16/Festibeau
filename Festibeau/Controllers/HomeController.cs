@@ -108,20 +108,20 @@ namespace Festibeau.Controllers
 
 
         [Route("Login")]
-        public IActionResult Login(string username, string password)
+        public IActionResult Login(string email, string password)
         {
-            // hash voor "wachtwoord"
-            string hash = "dc00c903852bb19eb250aeba05e534a6d211629d77d055033806b783bae09937";
-
             // is er een wachtwoord ingevoerd?
             if (!string.IsNullOrWhiteSpace(password))
             {
+                Person p = GetPersonByEmail(email);
+                if (p == null)
+                    return View();
 
                 //Er is iets ingevoerd, nu kunnen we het wachtwoord hashen en vergelijken met de hash "uit de database"
                 string hashVanIngevoerdWachtwoord = ComputeSha256Hash(password);
-                if (hashVanIngevoerdWachtwoord == hash)
+                if (hashVanIngevoerdWachtwoord == p.Wachtwoord)
                 {
-                    HttpContext.Session.SetString("User", username);
+                    HttpContext.Session.SetString("User", p.Email);
                     return Redirect("/");
                 }
                 
@@ -131,6 +131,41 @@ namespace Festibeau.Controllers
 
             return View();
         }
+        private Person GetPersonByEmail(string email)
+        {
+            List<Person> persons = new List<Person>();
+
+            // verbinding maken met de database
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                // verbinding openen
+                conn.Open();
+
+                // SQL query die we willen uitvoeren
+                MySqlCommand cmd = new MySqlCommand($"select * from klant where email = '{email}'", conn);
+
+                // resultaat van de query lezen
+                using (var reader = cmd.ExecuteReader())
+                {
+                    // elke keer een regel (of eigenlijk: database rij) lezen
+                    while (reader.Read())
+                    {
+                        Person p = new Person();
+                        p.Email = reader["email"].ToString();
+                        p.Wachtwoord = reader["wachtwoord"].ToString();
+                        
+
+
+                        // voeg de naam toe aan de lijst met namen
+                        persons.Add(p);
+                    }
+                }
+            }
+
+            // return de lijst met namen
+            return persons[0];
+        }
+
 
         [Route("Contact")]
         public IActionResult Contact()
