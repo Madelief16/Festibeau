@@ -77,7 +77,7 @@ header {
         }
 
     .simpleLogin form legend {
-        background-color: #8fc400;
+        background-color: fuchsia;
         border-top: 0 none;
         color: white;
         display: table-cell;
@@ -88,13 +88,13 @@ header {
         width: 90%;
         margin: 10px 0;
         padding: 10px 5%;
-        border: thin #8fc400 solid;
+        border: thin fuchsia solid;
     }
 
 .simpleLogin input[type="submit"] {
     width: 100px;
     float: right;
-    background: #8fc400;
+    background: fuchsia;
     color: white;
     transition: .2s;
     border: 0;
