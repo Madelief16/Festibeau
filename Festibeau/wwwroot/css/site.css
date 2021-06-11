@@ -30,7 +30,7 @@ header {
     .homepage a {
         flex: 1;
         display: block;
-        background-color: aquamarine;
+        background-color: lightcyan;
         padding: 10px;
         
     }
@@ -55,6 +55,58 @@ header {
     .festival a {
         background-color: antiquewhite;
         padding: 100px;
+    }
+
+.simpleLogin form {
+    max-width: 400px;
+    margin: auto;
+    background: #fefefd;
+    box-shadow: 0 10px 10px #222;
+}
+
+    .simpleLogin form fieldset {
+        border: 0 none;
+        margin: 0;
+        padding: 20px;
+    }
+
+        .simpleLogin form legend,
+        .simpleLogin form fieldset input {
+            font-family: Open Sans;
+            font-size: 15px;
+        }
+
+    .simpleLogin form legend {
+        background-color: #8fc400;
+        border-top: 0 none;
+        color: white;
+        display: table-cell;
+        padding: 10px 20px;
+        width: auto;
+    }
+    .simpleLogin form fieldset input {
+        width: 90%;
+        margin: 10px 0;
+        padding: 10px 5%;
+        border: thin #8fc400 solid;
+    }
+
+.simpleLogin input[type="submit"] {
+    width: 100px;
+    float: right;
+    background: #8fc400;
+    color: white;
+    transition: .2s;
+    border: 0;
+    cursor: pointer;
+}
+
+    .simpleLogin input[type="submit"]:focus,
+    .simpleLogin input[type="submit"]:hover,
+    .simpleLogin input[type="submit"]:active {
+        padding: 10px 5%;
+        background: #B3E226;
+        outline: none;
     }
 
 

@@ -2,12 +2,15 @@
     ViewData["Title"] = "Login";
 }
 <h1>@ViewData["Title"]</h1>
-<div id="Formulier">
 
-    <h1>Log hier in op je Festibeau account: </h1>
+
+<div class="simpleLogin">
     <form>
-        <div id="gebruikersnaam"><p>Gebruikersnaam:</p><input type="text" name="username" /></div><br />
-        <div id="wachtwoord"><p>Wachtwoord:</p><input type="text" name="password" /></div><br />
-        <div id="versturen"><input type="submit" value="Versturen" /></div><br />
+        <legend>Let's Login</legend>
+        <fieldset>
+            <input id="name" placeholder="Username" type="text">
+            <input id="pass" placeholder="Password" type="password">
+            <input id="submit" type="submit" value="Log in">
+        </fieldset>
     </form>
-</div>
+</div>       
