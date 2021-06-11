@@ -70,11 +70,42 @@ namespace Festibeau.Controllers
             return names;
         }
 
+
+        //private List<festivaldag> Getfestivaldagen(string id)
+        //{
+        //    List<festivaldag> festivaldagen = new List<Festivaldag>();
+        //    using (MySqlConnection conn = new MySqlConnection(connectionString))
+        //    {
+        //        conn.Open();
+        //        MySqlCommand cmd = new MySqlCommand($"select * from voorstelling where film_id = {id}", conn);
+        //        using (var reader = cmd.ExecuteReader())
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                Festivaldag p = new Festivaldag
+        //                {
+        //                    Id = Convert.ToInt32(reader["Id"]),
+        //                    Festivals_id = Convert.ToInt32(reader["festivals_id"]),
+        //                    Voorraad = Convert.ToInt32(reader["Voorraad"]),
+        //                    Datum = DateTime.Parse(reader["Datum"].ToString()),
+
+        //                };
+        //                festivaldagen.Add(p);
+        //            }
+        //        }
+        //    }
+        //    return festivaldagen;
+        //}
+
+
+
+
         [Route("Privacy")]
         public IActionResult Privacy()
         {
             return View();
         }
+
 
         [Route("Login")]
         public IActionResult Login(string username, string password)

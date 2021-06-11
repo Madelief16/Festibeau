@@ -26,7 +26,7 @@ namespace Festibeau
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".AdventureWorks.Session";
-                options.IdleTimeout = TimeSpan.FromSeconds(200);
+                options.IdleTimeout = TimeSpan.FromSeconds(20000);
                 options.Cookie.IsEssential = true;
             });
             

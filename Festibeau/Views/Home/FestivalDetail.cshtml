@@ -17,4 +17,15 @@
 
 </div>
 
+@*@if (festivaldag != null)
+{
+    foreach (festivaldag v in festivaldagen)
+    {
+        <p>
+            @v.Datum.ToString("D")
+            - Aantal tickets over: @v.Voorraad.ToString("D")
+        </p>
+    }
+}*@
+
 
