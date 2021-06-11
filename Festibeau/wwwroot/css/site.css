@@ -32,6 +32,8 @@ header {
         display: block;
         background-color: lightcyan;
         padding: 10px;
+        text-decoration: none;
+        color: black;
         
     }
 
@@ -55,6 +57,8 @@ header {
     .festival a {
         background-color: antiquewhite;
         padding: 100px;
+        text-decoration: none;
+        color: black;
     }
 
 .simpleLogin form {
@@ -110,14 +114,7 @@ header {
     }
 
 
-
-
-
-
-
 /*Footer*/
-
-
 .footer {
     display: flex;
     flex-flow: row wrap;
